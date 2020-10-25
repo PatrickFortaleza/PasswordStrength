@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Password | Strength Checker </title>
     <link href="/style.css" rel="stylesheet" type="text/css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <h1>Password Strength Test</h1>
-    <div class="strength-meter"></div>
-    <input type="text" autiofocus aria-labelledby="password">
+    <div class="strength-meter" id="strength-meter">
+        <div id="strength-bar"></div>
+    </div>
+    <input class="password-input" id="password-input" type="text" autofocus aria-labelledby="password">
     <div id="reasons" class="reasons"></div>
+
 </body>
 </html>
