@@ -7,6 +7,23 @@ const passwordInput = document.querySelector('#password')
 const reasons = document.querySelector('#reasons');
 
 
+function visible() {
+    var x = passwordInput
+    var y = document.getElementById("hide-1");
+    var z = document.getElementById("hide-2");
+  
+    if (x.type === "password") {
+      x.type = "text";
+      y.style.display = "block";
+      z.style.display = "none";
+    } else {
+      x.type = "password";
+      y.style.display = "none";
+      z.style.display = "block";
+    }
+  }
+
+
 // ----------------------------------------------- //
 // Calculates length weakness
 // ----------------------------------------------- //
@@ -150,6 +167,13 @@ const updateStrengthMeter = () =>{
     console.log(strength)
     // after strength has been calculated, set the css variable to the strength calculation
     strengthBar.style.width = `${strength}%`
+    if(strength < 50){
+        strengthBar.style.background = '#ff0033'
+    }else if (strength < 80) {
+        strengthBar.style.background = '#ffcc00'
+    }else {
+        strengthBar.style.background = '#339900'
+    }
 }
 
 
