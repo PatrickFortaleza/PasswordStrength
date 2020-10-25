@@ -5,6 +5,7 @@ const strengthMeter = document.getElementById('strength-meter');
 const strengthBar = document.getElementById('strength-bar');
 const passwordInput = document.querySelector('#password')
 const pReasons = document.querySelector('#pReasons');
+const passwordMeta = document.querySelector('.password-meta')
 
 
 function visible() {
@@ -141,6 +142,8 @@ const calculatePasswordStrength = (password) => {
 // Will update strength meter 
 // ----------------------------------------------- //
 const updateStrengthMeter = () =>{
+    // Display password meta
+    passwordMeta.style.display = 'block';
     // Assign return value to constant
     const weaknesses = calculatePasswordStrength(passwordInput.value);
     // Init strength value
@@ -177,8 +180,8 @@ const updateStrengthMeter = () =>{
 }
 
 
-// Updates strength checker on first load
-updateStrengthMeter();
+// // Updates strength checker on first load
+// updateStrengthMeter();
 
 // Adds event listener to input
 passwordInput.addEventListener('input', updateStrengthMeter)

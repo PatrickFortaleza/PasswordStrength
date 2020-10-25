@@ -5,7 +5,7 @@ const emailInput = document.querySelector('#email')
 const eReasons = document.querySelector('#eReasons');
 
 // ----------------------------------------------- //
-// Check for "@" in email string
+// Check for valid email
 // ----------------------------------------------- //
 const checkValid = (email) => {
     // We can breakup the regex pattern into (4) sections

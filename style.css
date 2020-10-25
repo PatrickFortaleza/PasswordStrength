@@ -88,6 +88,10 @@ input, textarea{
 /* PASSWORD
 /* -----------------------------------------------*/
 
+.password-meta {
+    display: none;
+}
+
 #Lpassword{
     display: flex;
     justify-content: space-between;
@@ -108,7 +112,7 @@ input, textarea{
     border-radius: 2px;
     height: 0.5rem;
     width: 100%;
-    border: 1px solid #333;
+    border: 0.25px solid #333;
     position: relative;
     overflow: hidden;
 }
