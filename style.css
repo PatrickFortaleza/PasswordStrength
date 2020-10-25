@@ -47,7 +47,7 @@ input, textarea{
 
 .fieldset{
     margin-top: 17px;
-    border: 1px solid #444;
+    border: 1px solid #222;
     padding: 3px 5px;
     border-radius: 2px;
     transition: all .2s ease-in-out;
@@ -153,12 +153,12 @@ input, textarea{
 }
 
 
-ul#reasons {
+ul.reasons {
     list-style-type: none;
     padding-left: 0;
 }
 
-ul#reasons li {
+ul.reasons li {
     margin: 0;
     font-size: 0.8em;
     display: flex;
@@ -167,14 +167,14 @@ ul#reasons li {
     max-width: 500px;
 }
 
-ul#reasons li .svg-cont {
+ul.reasons li .svg-cont {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     margin-right: 4px; 
 }
 
-ul#reasons li svg {
+ul.reasons li svg {
     fill: #ff0033; 
     width: 7px;
 }

@@ -4,7 +4,7 @@
 const strengthMeter = document.getElementById('strength-meter');
 const strengthBar = document.getElementById('strength-bar');
 const passwordInput = document.querySelector('#password')
-const reasons = document.querySelector('#reasons');
+const pReasons = document.querySelector('#pReasons');
 
 
 function visible() {
@@ -145,8 +145,8 @@ const updateStrengthMeter = () =>{
     const weaknesses = calculatePasswordStrength(passwordInput.value);
     // Init strength value
     let strength = 100
-    // Clear reasons ul before re-render
-    reasons.innerHTML = '';
+    // Clear pReasons ul before re-render
+    pReasons.innerHTML = '';
 
     if (passwordInput.value.length = 0) {
         strength - 100
@@ -159,10 +159,10 @@ const updateStrengthMeter = () =>{
         if (weakness == null) return
         // Deduct the weakness deduction score from strength
         strength -= weakness.deduction
-        // Append messages to reasons ul
+        // Append messages to pReasons ul
         const messageElement = document.createElement('li')
         messageElement.innerHTML = `<div class="svg-cont"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></div> ${weakness.message}`;
-        reasons.appendChild(messageElement);
+        pReasons.appendChild(messageElement);
     })
 
     // after strength has been calculated, set the css variable to the strength calculation
