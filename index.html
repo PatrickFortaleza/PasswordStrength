@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Password | Strength Checker </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="/style.css" rel="stylesheet" type="text/css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <h1>Password Strength Test</h1>
-    <div class="strength-meter" id="strength-meter">
-        <div id="strength-bar"></div>
+    <div class="form_container">
+        <h1>Signup</h1>
+        <form>            
+            <!-- <input class="password-input" id="password-input" type="password" autofocus aria-labelledby="password"> -->
+
+            <div class="fieldset">
+                <label for="phone">Password:</label>
+                <input  type="password"
+                        id="password" 
+                        name="password" 
+                        size="35"
+                        required
+                        aria-labelledby="password" >
+            </div><!--end fieldset-->
+            <div class="meta">
+                <span class="pseudo-label">Strength meter:</span>
+                <div class="strength-meter" id="strength-meter">
+                    <div id="strength-bar"></div>
+                </div>
+                <ul id="reasons" class="reasons"></ul>
+            </div>
+        </form>
     </div>
-    <input class="password-input" id="password-input" type="text" autofocus aria-labelledby="password">
-    <ul id="reasons" class="reasons"></ul>
 
 </body>
 </html>
