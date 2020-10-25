@@ -41,6 +41,8 @@ const calculatePasswordStrength = (password) => {
     // Init empty array
     const weaknesses = []
     weaknesses.push(lengthWeakness(password))
+    weaknesses.push(lowercaseWeakness(password))
+    weaknesses.push(uppercaseWeakness(password))
     return weaknesses
 }
 
@@ -72,22 +74,37 @@ const lowercaseWeakness = (password) => {
     // create regular expension - calculate # of lower case letters
     // /[a-z]/g  = globally calculate characters within password that match a-z
     // if undefined, assign matches as an empty array
-    const matches = password.match(/[a-z]/g) || []
+    return characterTypeWeakness(password, /[a-z]/g, 'lowercase')
+}
 
+// ----------------------------------------------- //
+// Calculate uppercase weakness
+// ----------------------------------------------- //
+const uppercaseWeakness = (password) => {
+    // create regular expension - calculate # of lower case letters
+    // /[A-Z]/g  = globally calculate characters within password that match a-z
+    // if undefined, assign matches as an empty array
+    return characterTypeWeakness(password, /[A-Z]/g, 'uppercase')
+}
+
+// ----------------------------------------------- //
+// Calculate character type weakness
+// ----------------------------------------------- //
+const characterTypeWeakness = (password, regex, type) => {
+    const matches = password.match(regex) || []
     if(matches.length === 0){
         return {
-            message: 'Your password has no lowercase characters',
+            message: `Your password has no ${type} characters`,
             deduction: 20
         }
     }
 
     if(matches.length <= 0){
         return {
-            message: 'Your password could use more lowercase characters',
+            message: `Your password could use more ${type} characters`,
             deduction: 20
         }
     }
-
 }
 
 // Updates strength checker on first load
