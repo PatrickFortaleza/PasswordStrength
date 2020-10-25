@@ -65,6 +65,30 @@ const lengthWeakness = (password) => {
     }
 }
 
+// ----------------------------------------------- //
+// Calculate lowercase weakness
+// ----------------------------------------------- //
+const lowercaseWeakness = (password) => {
+    // create regular expension - calculate # of lower case letters
+    // /[a-z]/g  = globally calculate characters within password that match a-z
+    // if undefined, assign matches as an empty array
+    const matches = password.match(/[a-z]/g) || []
+
+    if(matches.length === 0){
+        return {
+            message: 'Your password has no lowercase characters',
+            deduction: 20
+        }
+    }
+
+    if(matches.length <= 0){
+        return {
+            message: 'Your password could use more lowercase characters',
+            deduction: 20
+        }
+    }
+
+}
 
 // Updates strength checker on first load
 updateStrengthMeter();
