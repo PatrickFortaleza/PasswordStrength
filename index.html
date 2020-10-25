@@ -8,6 +8,7 @@
     <link href="/style.css" rel="stylesheet" type="text/css">
     <script src="password.js" defer></script>
     <script src="email.js" defer></script>
+    <script src="phone.js" defer></script>
     <script src="index.js" defer></script>
 </head>
 <body>
@@ -25,7 +26,19 @@
             </div><!--end fieldset-->   
             <div class="meta">
                 <ul id="eReasons" class="reasons"></ul>
-            </div>         
+            </div>
+            <div class="fieldset">
+                <label id="Lphone" for="phone">Phone Number:</label>
+                <input  type="phone"
+                        id="phone" 
+                        name="phone" 
+                        size="35"
+                        required
+                        aria-labelledby="phone" >
+            </div><!--end fieldset-->   
+            <div class="meta">
+                <ul id="phReasons" class="reasons"></ul>
+            </div>            
             <div class="fieldset">
                 <label id="Lpassword" for="password">Password: 
                     <span class="eye" onclick="visible()">

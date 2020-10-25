@@ -31,7 +31,6 @@ const updateMessage = (email) =>{
 }
 
 const emailCheck = () => {
-    const emailString = emailInput.value
     const invalids = updateMessage(emailInput.value);
     eReasons.innerHTML = '';
 
