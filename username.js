@@ -15,13 +15,16 @@ const uReasons = document.querySelector('#uReasons');
 const checkValidUsernameLength = (username) => {
     const length = username.length
 
-    if(length < 3 || length > 12 ){
+    if(length < 3 || length > 20 ){
         return  { 
-            message: `usernames must be 3 - 12 characters in length`,
+            message: `usernames must be 3 - 20 characters in length`,
             success: false }
     }
 }
 
+// ----------------------------------------------- //
+// Check for valid special characters
+// ----------------------------------------------- //
 const checkValidUsernameSpecs = (username) => {
     // A username must be:
     // 3 - 12 characters in length
@@ -36,10 +39,29 @@ const checkValidUsernameSpecs = (username) => {
     }
 }
 
+// ----------------------------------------------- //
+// Check for existing usernames
+// ----------------------------------------------- //
+const checkExistingUser = (username) => {
+    // var regex = /^[a-zA-Z0-9]+$/g
+    // const matches = username.match(regex) || []
+
+    const matches = users.filter(u => {
+        return u.name.toLocaleUpperCase() == username.toLocaleUpperCase()
+    })
+
+    if(matches.length > 0){
+        return  { 
+            message: `This username is taken`,
+            success: false }
+    }
+}
+
 const updateUsernameMessage = (username) =>{
     const invalid = []
     invalid.push(checkValidUsernameLength(username))
     invalid.push(checkValidUsernameSpecs(username))
+    invalid.push(checkExistingUser(username))
     return invalid
 }
 
