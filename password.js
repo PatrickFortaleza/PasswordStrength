@@ -33,14 +33,14 @@ const lengthWeakness = (password) => {
     
     if(length <= 5){
         return {
-            message: 'Your password does not exceed the standard amount of character length',
+            message: 'Password needs to be longer than 5 characters',
             deduction: 40,
         }
     }
 
     if(length <= 10){
         return {
-            message: 'Your password can be longer',
+            message: 'Password can be longer',
             deduction: 10,
         }
     }
@@ -92,14 +92,14 @@ const characterTypeWeakness = (password, regex, type) => {
     const matches = password.match(regex) || []
     if(matches.length === 0){
         return {
-            message: `Your password has no ${type} characters`,
+            message: `Password has no ${type} characters`,
             deduction: 20
         }
     }
 
     if(matches.length < 2){
         return {
-            message: `Your password could use more ${type} characters`,
+            message: `Password could use more ${type} characters`,
             deduction: 5
         }
     }
@@ -115,7 +115,7 @@ const repeatCharactersWeakness = (password) => {
     const matches = password.match(/(.)\1/) || []
     if(matches.length > 0){
         return {
-            message: `Your password has repeat characters`,
+            message: `Password has repeat characters`,
             // we multiply here, as if you have more matching characters, the weaker your password is.
             deduction: matches.length * 10
         }
