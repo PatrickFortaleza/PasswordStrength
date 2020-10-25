@@ -43,6 +43,8 @@ const calculatePasswordStrength = (password) => {
     weaknesses.push(lengthWeakness(password))
     weaknesses.push(lowercaseWeakness(password))
     weaknesses.push(uppercaseWeakness(password))
+    weaknesses.push(numbersWeakness(password))
+    weaknesses.push(specialWeakness(password))
     return weaknesses
 }
 
@@ -73,7 +75,6 @@ const lengthWeakness = (password) => {
 const lowercaseWeakness = (password) => {
     // create regular expension - calculate # of lower case letters
     // /[a-z]/g  = globally calculate characters within password that match a-z
-    // if undefined, assign matches as an empty array
     return characterTypeWeakness(password, /[a-z]/g, 'lowercase')
 }
 
@@ -81,16 +82,36 @@ const lowercaseWeakness = (password) => {
 // Calculate uppercase weakness
 // ----------------------------------------------- //
 const uppercaseWeakness = (password) => {
-    // create regular expension - calculate # of lower case letters
+    // create regular expension - calculate # of upper case letters
     // /[A-Z]/g  = globally calculate characters within password that match a-z
-    // if undefined, assign matches as an empty array
     return characterTypeWeakness(password, /[A-Z]/g, 'uppercase')
+}
+
+// ----------------------------------------------- //
+// Calculate numbers weakness
+// ----------------------------------------------- //
+const numbersWeakness = (password) => {
+    // create regular expension - calculate # of numbers
+    // /[0-9]/g  = globally calculate characters within password that match a-z
+    return characterTypeWeakness(password, /[0-9]/g, 'number')
+}
+
+// ----------------------------------------------- //
+// Calculate special characters weakness
+// ----------------------------------------------- //
+const specialWeakness = (password) => {
+    // create regular expension - calculate # of special characters
+    // /[^0-9a-zA-z\s]/g = globally calculate characters within password that do ^(not) match
+    // 0-9, a-z, A-Z and \s (whitespace)
+    // if undefined, assign matches as an empty array
+    return characterTypeWeakness(password, /[^0-9a-zA-Z\s]/g, 'special')
 }
 
 // ----------------------------------------------- //
 // Calculate character type weakness
 // ----------------------------------------------- //
 const characterTypeWeakness = (password, regex, type) => {
+    // if undefined, assign matches as an empty array
     const matches = password.match(regex) || []
     if(matches.length === 0){
         return {
@@ -99,7 +120,7 @@ const characterTypeWeakness = (password, regex, type) => {
         }
     }
 
-    if(matches.length <= 0){
+    if(matches.length < 2){
         return {
             message: `Your password could use more ${type} characters`,
             deduction: 20
