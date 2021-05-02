@@ -1,4 +1,12 @@
-# SignupForm
-A signup form with regex validation, error handling and error messages.
+# Signup Form
+A simple registration form with client-side validation. Built with HTML, CSS and vanilla Javascript.
 
-<a href="https://pfteza-dev.com/signup/" target="_blank">https://pfteza-dev.com/signup/</a>
+## Features
+* Username, Email, and Phone number fields.
+* Regex-based field validation
+* real-time field evaluation, and error messages.
+* Password strength meter.
+
+<a href="https://signup-form-sample.netlify.app/" target="_blank">Live Demo</a>
+
+
